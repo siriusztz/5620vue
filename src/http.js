@@ -8,17 +8,5 @@ var instance = axios.create({
    // withCredentials: true
 });
 
-// http request 拦截器
-// instance.interceptors.request.use(
-//     config => {
-//             if (sessionStorage.getItem('token') != "") {
-//               config.headers.Authorization = sessionStorage.getItem('token');
-//             }
-//         return config;
-//     },
-//     err => {
-//         return Promise.reject(err);
-// });
-
 
 export default instance;

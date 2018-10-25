@@ -16,7 +16,7 @@ router.beforeEach((to, from, next) => {
   console.log(to.path)
   //如果在sessionStorage里面没储存就要跳转login
   let user = sessionStorage.getItem('userinfo');
-  if (!user && !(to.path == '/login' || to.path == '/signup')) {
+  if (user==null && !(to.path == '/login' || to.path == '/signup')) {
     next({ path: '/login' })
   } else {
     next()

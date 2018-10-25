@@ -81,10 +81,10 @@ export default {
           overallApi
             .loginUser(this.form)
             .then(res => {
-              console.log(res.data.session);
-              //登陆成功后设置sessionStorage
-              sessionStorage.setItem("userinfo", res.data.session);
-              this.$router.push({ path: "/" });
+                console.log("data",res.data);
+                //登陆成功后设置sessionStorage
+                sessionStorage.setItem("userinfo", res.data.type);
+                this.$router.push({ path: "/" });
             })
             .catch(err => {
               this.$message.error("username or password not correct");
@@ -96,7 +96,8 @@ export default {
       });
     },
     gotoSignup() {
-      this.$router.push({ path: "/signup" });
+        sessionStorage.removeItem("userinfo")
+        this.$router.push({ path: "/signup" });
     }
   }
 };

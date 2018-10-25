@@ -20,7 +20,7 @@
                                 <span>{{item.name}}</span>
                             </template>
                             <div v-for="child in item.children" :key="child.path">
-                                <el-menu-item :index="child.path" v-if="!child.hidden">
+                                <el-menu-item :index="child.path" v-if='child.name==type'>
                                     <i :class="child.icon"></i>
                                     <span>{{child.name}}</span>
                                 </el-menu-item>
@@ -45,15 +45,18 @@ import Vue from "vue";
 import overallApi from "../api/overall";
 
 export default {
-  components: {},
   data() {
     return {
-      username: ""
+      type: null
     };
   },
   mounted() {
     let userinfo = sessionStorage.getItem("userinfo");
-    this.username = userinfo;
+    if (userinfo==1){
+        this.type="manage"
+    }else{
+        this.type="face"
+    }
   },
   methods: {
     logout: function() {
