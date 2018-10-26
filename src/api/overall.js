@@ -12,77 +12,18 @@ let logout = params => {
     return axios.post('/user/signout')
 }
 
-//overall
-let getListByrevNum = params => {
-    return axios.get('/overall/revisenumrank')
+let getUserlist = params => {
+    return axios.get('/user/userList', { params: params })
 }
 
-let getListByuserNum = params => {
-    return axios.get('/overall/reviseuserank')
-}
-
-let getListByhistory = params => {
-    return axios.get('/overall/historyrank')
-}
-
-let getOverallStatistic = params => {
-    return axios.get('/overall/statistic')
-}
-
-//article
-let queryAllarticle = params => {
-    return axios.get('/indiv/allarticle')
-}
-
-let queryIfnewArticles = params => {
-    return axios.get('/indiv/wiki/' + params.name)
-}
-
-let getSelectArticle = params => {
-    return axios.get('/indiv/select', { params: params })
-}
-let getArticleRevnum = params => {
-    return axios.get('/indiv/article/' + params.name)
-}
-let getTopfiveEditor = params => {
-    return axios.get('/indiv/topfive/' + params.name)
-}
-
-let getIndivStatistic = params => {
-    return axios.get('/indiv/statistic/' + params.name)
-}
-
-let getTopfiveStatistic = params => {
-    return axios.get('/indiv/topfivestatistic', { params: params })
-}
-
-
-//author
-let getSelectAuthor = params => {
-    return axios.get('/author/select', { params: params })
-}
-let getRevisonByauthor = params => {
-    return axios.get('/author/revisions/' + params.name)
+let getFacialRecognition = params => {
+    return axios.get('/user/facial')
 }
 
 export default {
     loginUser,
     logout,
     signUp,
-
-    getListByrevNum,
-    getListByuserNum,
-    getListByhistory,
-    getOverallStatistic,
-
-    queryAllarticle,
-    queryIfnewArticles,
-    getSelectArticle,
-    getArticleRevnum,
-    getTopfiveEditor,
-    getIndivStatistic,
-    getTopfiveStatistic,
-
-    getSelectAuthor,
-    getRevisonByauthor,
+    getUserlist,
+    getFacialRecognition,
 }
