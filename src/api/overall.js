@@ -20,10 +20,25 @@ let getFacialRecognition = params => {
     return axios.get('/user/facial')
 }
 
+let getUserById = params => {
+    return axios.get('/user/getone/' + params.id)
+}
+
+let updateUser = params => {
+    return axios.post('/user/update', params)
+}
+
+let deleteOne = params => {
+    return axios.delete('/user/delete/' + params.id)
+}
+
 export default {
     loginUser,
     logout,
     signUp,
     getUserlist,
     getFacialRecognition,
+    getUserById,
+    updateUser,
+    deleteOne
 }

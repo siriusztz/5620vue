@@ -24,7 +24,6 @@
         </el-form-item>
       </el-form>
     </el-col>
-
   </el-row>
 </template>
 

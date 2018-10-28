@@ -9,10 +9,10 @@
             </el-table-column>
             <el-table-column prop="email" label="email">
             </el-table-column>
-            <el-table-column label="操作">
+            <el-table-column label="操作" width="220px">
                 <template slot-scope="scope">
-                    <el-button size="small" type="primary" @click="handleAddOrEdit(scope.row.id)">delete</el-button>
-                    <!-- <el-button size="small" type="primary" icon="search" @click="handleViewOdds(scope.row.id)"></el-button> -->
+                    <el-button size="small" type="primary" @click="handleEdit(scope.row._id)">Update</el-button>
+                    <el-button size="small" type="primary" icon="search" @click="handleDelete(scope.row._id)">Delete</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -40,13 +40,14 @@ export default {
       },
       pager: {
         tableListTotal: 0,
-        pageSize: 10,
+        pageSize: 2,
         currentPage: 1
       }
     };
   },
   methods: {
     getUserList() {
+      console.log(this.queryForm);
       overallApi
         .getUserlist(this.queryForm)
         .then(res => {
@@ -56,10 +57,28 @@ export default {
         })
         .catch();
     },
+    handleEdit(id) {
+      this.$router.push({
+        path: "/analysis/edit/" + id
+      });
+    },
+    handleDelete(userId) {
+      overallApi
+        .deleteOne({ id: userId })
+        .then(res => {
+          this.$message.success("Delete successfully");
+          this.$router.push({ path: "/analysis/manage" });
+        })
+        .catch(err => {
+          this.$message.error("Delete error");
+          this.$router.push({ path: "/analysis/manage" });
+          console.log("Delete Game", err);
+        });
+    },
     handleCurrentChange(val) {
       this.pager.currentPage = val;
       this.queryForm.page = this.pager.currentPage;
-      this.queryForm.pagesize = this.pager.pageSize;
+      this.queryForm.pageSize = this.pager.pageSize;
       this.getUserList();
     }
   }

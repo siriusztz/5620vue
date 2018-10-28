@@ -28,6 +28,7 @@ export default new Router({
       children: [
         { name: 'face', path: '/analysis/face', icon: 'el-icon-document', component: require('@/components/analysis').default },
         { name: 'manage', path: '/analysis/manage', icon: 'el-icon-location', component: require('@/components/management').default },
+        { name: 'edit', path: '/analysis/edit/:id', component: require('@/components/form').default, hidden: true },
       ]
     },
   ]
