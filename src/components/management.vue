@@ -74,6 +74,7 @@ export default {
           this.$router.push({ path: "/analysis/manage" });
           console.log("Delete Game", err);
         });
+        this.getUserList();
     },
     handleCurrentChange(val) {
       this.pager.currentPage = val;
